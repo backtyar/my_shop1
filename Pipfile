@@ -11,6 +11,8 @@ python-decouple = "*"
 psycopg2-binary = "*"
 startapp = "*"
 produce = "*"
+djangorestframework-simplejwt = "*"
+django-filter = "*"
 
 [dev-packages]
 
