@@ -37,16 +37,22 @@ class CategoryView(generics.ListAPIView):
     serializer_class = CategorySerializers
 
 
+class CreateCategoryView(generics.CreateAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializers
+    pagination_class = [permissions.IsAdminUser]
+
+
 
 class DetailCategoryView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializers
-    permission_classes = [permissions.IsAdminUser, ]
+    permission_classes = [permissions.IsAdminUser,]
 
 
 class OrderView(generics.ListAPIView):
     serializer_class = OrderSerializers
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [CustomPermissions]
 
     def get_queryset(self):
         user = self.request.user

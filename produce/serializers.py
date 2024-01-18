@@ -3,21 +3,24 @@ from rest_framework import serializers
 from .models import Product, Category, Order, User
 
 
+
 class ProductSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Product
         fields = '__all__'
-        read_only = ['created', 'available']
+        read_only = ['created']
 
 
 
 class CategorySerializers(serializers.ModelSerializer):
-    # product =
+
+    products = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Category
-        fields = '__all__'
+        fields = ['id', 'name', 'image', 'slug', 'products']
+
 
 
 

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Product, Order
+from .models import Category, Product, Order, BlackListedToken
 
 
 @admin.register(Category)
@@ -27,6 +27,9 @@ class AdminOrder(admin.ModelAdmin):
     list_display = ['id', 'product', 'quantity', 'created', 'user']
 
 
+@admin.register(BlackListedToken)
+class AdminOrder(admin.ModelAdmin):
+    list_display = ['id', 'token', 'user', 'timestamp']
 
 
 
